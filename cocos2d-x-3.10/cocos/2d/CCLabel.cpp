@@ -1462,7 +1462,8 @@ void Label::draw(Renderer *renderer, const Mat4 &transform, uint32_t flags)
                 it.second->updateTransform();
             }
             // x-studio365 spec, ETC1 ALPHA supports for BMFONT & CHARMAP
-            auto texture = _batchNodes.at(0)->getTextureAtlas()->getTexture();
+            auto textureAtlas = _batchNodes.at(0)->getTextureAtlas();
+            auto texture = textureAtlas->getTexture();
             _quadCommand.init(_globalZOrder, texture->getName(), getGLProgramState(), 
                 _blendFunc, textureAtlas->getQuads(), textureAtlas->getTotalQuads(), transform, flags, texture->getAlphaName());
             renderer->addCommand(&_quadCommand);
