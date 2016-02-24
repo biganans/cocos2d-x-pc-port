@@ -54,6 +54,6 @@ void main() {
     vec4 texColor = texture2D(CC_Texture0, v_texCoord);
 
     gl_FragColor.a = v_fragmentColor.a * texture2D(CC_Texture1, v_texCoord).r;
-    gl_FragColor.rgb = texColor.rgb * gl_FragColor.a;
+    gl_FragColor.rgb = texColor.rgb * gl_FragColor.a * v_fragmentColor.rgb;
 }
 );
