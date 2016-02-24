@@ -98,6 +98,9 @@ extern CC_DLL const GLchar* ccETC1AAPositionTextureColor_vert;
 extern CC_DLL const GLchar* ccETC1AAPositionTextureColor_noMVP_vert;
 extern CC_DLL const GLchar* ccETC1AAPositionTextureColor_frag;
 extern CC_DLL const GLchar* ccETC1ASPositionTextureColor_frag;
+
+extern CC_DLL const char* ccETC1AAPositionTextureGray_frag;
+extern CC_DLL const char* ccETC1ASPositionTextureGray_frag;
 NS_CC_END
 /**
  end of support group

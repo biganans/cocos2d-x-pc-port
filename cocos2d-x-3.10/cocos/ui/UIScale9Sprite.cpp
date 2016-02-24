@@ -576,13 +576,12 @@ namespace ui {
         {
         case State::NORMAL:
         {
-            if (nullptr != _scale9Image)
-                glState = GLProgramState::getPositionTextureColorGLProgramState(_scale9Image->getTexture());// GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP);
+            glState = GLProgramState::getPositionTextureColorGLProgramState(_scale9Image != nullptr ? _scale9Image->getTexture() : nullptr); // GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP);
         }
         break;
         case State::GRAY:
         {
-            glState = GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_GRAYSCALE);
+            glState = GLProgramState::getPositionTextureGrayGLProgramState(_scale9Image != nullptr ? _scale9Image->getTexture() : nullptr); // GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_GRAYSCALE);
         }
         default:
             break;

@@ -312,14 +312,6 @@ void VertexAttribValue::setPointer(GLint size, GLenum type, GLboolean normalized
 //
 //
 
-
-GLProgramState* GLProgramState::setupNodeGLProgramState(Node* node, Texture2D* texture, bool noMVP)
-{
-    node->setGLProgramState(getPositionTextureColorGLProgramState(texture, noMVP));
-
-    return node->getGLProgramState();
-}
-
 GLProgramState* GLProgramState::getPositionTextureColorGLProgramState(Texture2D* texture, bool noMVP)
 {
     GLProgramState* state = nullptr;
@@ -338,6 +330,29 @@ GLProgramState* GLProgramState::getPositionTextureColorGLProgramState(Texture2D*
     }
     else {
         state = GLProgramState::getOrCreateWithGLProgramName(noMVP ? GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP : GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR);
+    }
+
+    return state;
+}
+
+GLProgramState* GLProgramState::getPositionTextureGrayGLProgramState(Texture2D* texture)
+{
+    GLProgramState* state = nullptr;
+    if (texture != nullptr) {
+        if (texture->getAlphaTexture() == nullptr) {
+            if (!texture->isETC1()) {
+                state = GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_GRAYSCALE);
+            }
+            else { // @warnning, force regard as merged ETC1 texture
+                state = GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_ETC1AA_POSITION_TEXTURE_GRAY_NO_MVP);
+            }
+        }
+        else { // x-studio365 spec, ETC1 ALPHA supports.
+            state = GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_ETC1AS_POSITION_TEXTURE_GRAY_NO_MVP);
+        }
+    }
+    else {
+        state = GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_GRAYSCALE);
     }
     
     return state;

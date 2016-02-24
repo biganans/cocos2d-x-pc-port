@@ -94,8 +94,11 @@ NS_CC_BEGIN
 
 // x-studio365 spec
 #include "ccShader_ETC1AA_PositionTextureColor.vert.ipp"
-#include "ccShader_ETC1AA_PositionTextureColor.frag.ipp"
 #include "ccShader_ETC1AA_PositionTextureColor_noMVP.vert.ipp"
+#include "ccShader_ETC1AA_PositionTextureColor.frag.ipp"
+#include "ccShader_ETC1AA_PositionTextureGray.frag.ipp"
+
 #include "ccShader_ETC1AS_PositionTextureColor.frag.ipp"
+#include "ccShader_ETC1AS_PositionTextureGray.frag.ipp"
 
 NS_CC_END

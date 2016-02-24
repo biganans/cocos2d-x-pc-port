@@ -498,7 +498,7 @@ void Label::reset()
     
 }
 
- //  x-studio365 spec, ETC1 ALPHA supports, for LabelType::BMFONT & LabelType::CHARMAP
+//  x-studio365 spec, ETC1 ALPHA supports, for LabelType::BMFONT & LabelType::CHARMAP
 static Texture2D* _getTexture(Label* label)
  {
     struct _FontAtlasPub : public FontAtlas
@@ -1090,6 +1090,9 @@ void Label::enableShadow(const Color4B& shadowColor /* = Color4B::BLACK */,const
 
     if (_currentLabelType == LabelType::BMFONT || _currentLabelType == LabelType::CHARMAP)
     {
+        // x-studio365 spec, ETC1 ALPHA supports.
+        setGLProgramState(GLProgramState::getPositionTextureColorGLProgramState(_getTexture(this), !_shadowEnabled));
+#if 0
         if (_shadowEnabled)
         {
             setGLProgramState(GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR));
@@ -1098,6 +1101,7 @@ void Label::enableShadow(const Color4B& shadowColor /* = Color4B::BLACK */,const
         {
             setGLProgramState(GLProgramState::getOrCreateWithGLProgramName(GLProgram::SHADER_NAME_POSITION_TEXTURE_COLOR_NO_MVP));
         }
+#endif
     }
 }
 

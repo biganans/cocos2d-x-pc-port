@@ -242,8 +242,8 @@ class CC_DLL GLProgramState : public Ref
     friend class GLProgramStateCache;
 public:
     /** x-studio365 spec, update node program state */
-    static GLProgramState* setupNodeGLProgramState(Node* node, Texture2D* texture, bool noMVP = true);
     static GLProgramState* getPositionTextureColorGLProgramState(Texture2D* texture, bool noMVP = true);
+    static GLProgramState* getPositionTextureGrayGLProgramState(Texture2D* texture);
 
     /** returns a new instance of GLProgramState for a given GLProgram */
     static GLProgramState* create(GLProgram* glprogram);
