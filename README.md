@@ -1,2 +1,2 @@
 # cocos2d-x-mfc-port
-Only contains different content of latest cocos2d-x release for MFC.
+Just contains different source code of latest cocos2d-x release for MFC.
