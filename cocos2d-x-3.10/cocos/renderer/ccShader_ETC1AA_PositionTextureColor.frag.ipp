@@ -36,7 +36,8 @@ void main()
 {
     vec4 texColor = texture2D(CC_Texture0, v_texCoord);
     texColor.a = texture2D(CC_Texture0, v_alphaCoord).r;
-    texColor.xyz = texColor.xyz * texColor.a;
-    gl_FragColor = texColor * v_fragmentColor;
+    texColor.rgb *= texColor.a; // premultiply alpha channel
+    
+    gl_FragColor = v_fragmentColor * texColor;
 }
 );

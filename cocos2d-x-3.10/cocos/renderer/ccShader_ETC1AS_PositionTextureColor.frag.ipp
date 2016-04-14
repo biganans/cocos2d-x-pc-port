@@ -36,7 +36,7 @@ uniform float u_percent;
 void main() {
     vec4 color1 = texture2D(CC_Texture0, v_texCoord);
     vec4 color2 = texture2D(CC_Texture1, v_texCoord);
-	
+    
     gl_FragColor.rgb = v_fragmentColor.a * color1.rgb * color2.r ;
     gl_FragColor.a   = v_fragmentColor.a * color2.r;
 }
@@ -53,7 +53,8 @@ varying vec2 v_texCoord;
 void main() {
     vec4 texColor = texture2D(CC_Texture0, v_texCoord);
     texColor.a = texture2D(CC_Texture1, v_texCoord).r;
-    texColor.rgb *= texColor.a; // premultiply alpha
+    texColor.rgb *= texColor.a; // premultiply alpha channel
+    
     gl_FragColor = v_fragmentColor * texColor;
 }
 );

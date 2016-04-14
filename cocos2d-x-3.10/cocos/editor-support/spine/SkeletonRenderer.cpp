@@ -247,7 +247,7 @@ void SkeletonRenderer::drawSkeleton(const Mat4 &transform, uint32_t transformFla
     _batch->flush();
 #endif
 
-#if 0 // disable slot
+#if 1 // debug drawing
     if (_debugSlots || _debugBones) {
         Director* director = Director::getInstance();
         director->pushMatrix(MATRIX_STACK_TYPE::MATRIX_STACK_MODELVIEW);
