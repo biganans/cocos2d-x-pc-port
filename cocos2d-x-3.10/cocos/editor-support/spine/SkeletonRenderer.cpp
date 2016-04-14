@@ -156,7 +156,7 @@ void SkeletonRenderer::drawSkeleton(const Mat4 &transform, uint32_t transformFla
     // onDrawSkeleton(_batch);
 
 #if 1 // original draw souce code
-    Color3B nodeColor = getColor();
+    Color3B nodeColor = getDisplayedColor();
     _skeleton->r = nodeColor.r / (float)255;
     _skeleton->g = nodeColor.g / (float)255;
     _skeleton->b = nodeColor.b / (float)255;
@@ -304,7 +304,7 @@ void SkeletonRenderer::onDrawSkeleton(PolygonBatch* batch) {
 #endif
     Mat4 transform = getNodeToWorldTransform();
 
-    Color3B nodeColor = getColor();
+    Color3B nodeColor = getDisplayedColor();
     _skeleton->r = nodeColor.r / (float)255;
     _skeleton->g = nodeColor.g / (float)255;
     _skeleton->b = nodeColor.b / (float)255;

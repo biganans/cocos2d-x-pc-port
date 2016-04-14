@@ -42,7 +42,7 @@ void main()
 {
     gl_Position = CC_MVPMatrix * a_position;
     v_fragmentColor = a_color;
-    v_texCoord = a_texCoord; // * vec2(1.0, 0.5);
+    v_texCoord = a_texCoord; // * vec2(1.0, 1.0);
     v_alphaCoord = v_texCoord + vec2(0.0, 0.5);
 }
 );
