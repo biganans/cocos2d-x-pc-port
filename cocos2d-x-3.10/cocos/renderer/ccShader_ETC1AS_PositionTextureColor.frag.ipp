@@ -51,10 +51,10 @@ varying vec4 v_fragmentColor;
 varying vec2 v_texCoord;
 
 void main() {
-    vec4 texColor = vec4(texture2D(CC_Texture0, v_texCoord).rgb, texture2D(CC_Texture1, v_texCoord).r);
-
-    texColor.rgb *= texColor.a; // premultiply alpha channel
+    vec4 texColor = texture2D(CC_Texture0, v_texCoord);
+    texColor.a = texture2D(CC_Texture1, v_texCoord).r * v_fragmentColor.a;
+    texColor.rgb = texColor.rgb * texColor.a * v_fragmentColor.rgb;
     
-    gl_FragColor = v_fragmentColor * texColor;
+    gl_FragColor = texColor;
 }
 );
