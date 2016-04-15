@@ -1476,4 +1476,13 @@ void Texture2D::removeSpriteFrameCapInset(SpriteFrame* spriteFrame)
     }
 }
 
+/// halx99 spec, ANDROID ETC1 ALPHA supports.
+void Texture2D::setAlphaTexture(Texture2D* alphaTex)
+{
+    if (alphaTex != nullptr) {
+        this->_alphaTexture = alphaTex;
+        this->_alphaTexture->retain();
+        this->_hasPremultipliedAlpha = true;
+    }
+}
 NS_CC_END

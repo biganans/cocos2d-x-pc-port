@@ -408,7 +408,7 @@ public:
 
     std::string getPath()const { return _filePath; }
 
-    void setAlphaTexture(Texture2D *pAlpha){ _alphaTexture = pAlpha; _alphaTexture->retain(); }
+    void setAlphaTexture(Texture2D *pAlpha);
 	Texture2D* getAlphaTexture(){ return _alphaTexture; }
 
     GLuint getAlphaName() const;
