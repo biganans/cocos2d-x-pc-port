@@ -7,4 +7,4 @@ cocos2d-x latest download: http://www.cocos2d-x.org/download
 
 * 全量资源加密支持，可以使用任意可重叠复用内存的加密算法，例如AES高级加密算法
 * 更加通用的文件数据读取接口，可一在任何地方调, 以标准库std::string作为返回值, 用std::move(fileData)来避免不必要的内存分配和拷贝
-* 内建ETC1d透明通道支持, 使用分离存储Alpha通道方式，默认Alpha通道存储文件名: xxx.pngAlpha
+* 内建ETC1透明通道支持, 使用分离存储Alpha通道方式，默认Alpha通道存储文件名: xxx.pngAlpha
