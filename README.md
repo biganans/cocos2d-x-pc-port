@@ -9,4 +9,5 @@ cocos2d-x latest download: http://www.cocos2d-x.org/download
 * 更加通用的文件数据读取接口，可在任何地方调, 以标准库std::string作为返回值, 用std::move(fileData)来避免不必要的内存分配和拷贝
 * 内建ETC1透明通道支持, 使用分离存储Alpha通道方式，默认Alpha通道存储文件名: xxx.pngAlpha
 * 增加对pc平台一些支持，如持续按住方向键处理，glfw支持以子窗口创建,异形窗口支持
+* win32第三方库全部使用vs2015 update2重新编译.
 * 典型产品: http://x-studio365.com/intro.html
