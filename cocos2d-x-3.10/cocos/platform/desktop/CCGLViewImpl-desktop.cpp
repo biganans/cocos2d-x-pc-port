@@ -41,7 +41,6 @@ THE SOFTWARE.
 
 #include "platform/CCFileUtils.h"
 #include "glfw3ext.h"
-
 #include "IrregularGL.inl"
 
 NS_CC_BEGIN

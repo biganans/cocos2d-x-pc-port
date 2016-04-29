@@ -254,6 +254,12 @@ namespace cocostudio
     void LoadingBarReader::setPropsWithFlatBuffers(cocos2d::Node *node, const flatbuffers::Table *loadingBarOptions)
     {
         LoadingBar* loadingBar = static_cast<LoadingBar*>(node);
+
+        auto pHackAssets = new std::vector<std::string>();
+        loadingBar->setUserData(pHackAssets);
+        auto& hackAssets = *pHackAssets;
+        hackAssets.resize(1);
+
         auto options = (LoadingBarOptions*)loadingBarOptions;
         
         bool fileExist = false;
@@ -311,6 +317,7 @@ namespace cocostudio
         }
         if (fileExist)
         {
+            hackAssets[0] = imageFileName;
             loadingBar->loadTexture(imageFileName, (Widget::TextureResType)imageFileNameType);
         }
         //else

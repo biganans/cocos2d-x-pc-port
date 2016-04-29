@@ -1482,7 +1482,7 @@ void Texture2D::setAlphaTexture(Texture2D* alphaTex)
     if (alphaTex != nullptr) {
         this->_alphaTexture = alphaTex;
         this->_alphaTexture->retain();
-        this->_hasPremultipliedAlpha = true;
+        this->_hasPremultipliedAlpha = true; // PremultipliedAlpha shoud be true.
     }
 }
 NS_CC_END
