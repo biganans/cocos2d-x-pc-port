@@ -1,4 +1,4 @@
- #ifndef _CRYPTO_WRAPPER_H_
+#ifndef _CRYPTO_WRAPPER_H_
 #define _CRYPTO_WRAPPER_H_
 #include <string>
 #include <vector>
@@ -53,7 +53,7 @@ namespace crypto {
             template<CipherMode = CipherMode::CBC>
             struct mode_spec
             {
-                static void encrypt(const char* in, size_t inlen, 
+                static void encrypt(const char* in, size_t inlen,
                     char* out, size_t outlen, const char* private_key, int keybits = 256)
                 {
                     detail::cbc_encrypt(in, inlen, out, outlen, private_key, keybits);
@@ -120,7 +120,7 @@ namespace crypto {
         {
             privacy::padding_spec<paddingMode>::perform(in);
 
-            privacy::mode_spec<cipherMode>::encrypt(in.data(),                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+            privacy::mode_spec<cipherMode>::encrypt(in.data(),
                 in.size(),
                 &in.front(),
                 in.size(),
@@ -173,29 +173,29 @@ namespace crypto {
                 inout.resize(outlen);
             }
         }
-        
+
     } /* end of namespace crypto::aes */
 
     namespace zlib {
         /*
-        ** level values: 
+        ** level values:
         ** Z_NO_COMPRESSION         0
         ** Z_BEST_SPEED             1
         ** Z_BEST_COMPRESSION       9
         ** Z_DEFAULT_COMPRESSION  (-1)
-        ** 
+        **
         */
         std::string compress(const unmanaged_string& in, int level = -1); // zlib 1.2.8 Z_DEFAULT_COMPRESSION is -1
         std::string uncompress(const unmanaged_string& in);
-        
+
         std::string deflate(const unmanaged_string& in, int level = -1); // zlib 1.2.8 Z_DEFAULT_COMPRESSION is -1
         std::string inflate(const unmanaged_string& in);
 
         std::string gzcompr(const unmanaged_string& in, int level = -1);
         std::string gzuncompr(const unmanaged_string& in);
-		
-		namespace abi {
-		    std::vector<char> compress(const unmanaged_string& in, int level = -1); // zlib 1.2.8 Z_DEFAULT_COMPRESSION is -1
+
+        namespace abi {
+            std::vector<char> compress(const unmanaged_string& in, int level = -1); // zlib 1.2.8 Z_DEFAULT_COMPRESSION is -1
             std::vector<char> uncompress(const unmanaged_string& in);
 
             std::vector<char> deflate(const unmanaged_string& in, int level = -1); // zlib 1.2.8 Z_DEFAULT_COMPRESSION is -1
@@ -204,7 +204,7 @@ namespace crypto {
             std::vector<char> gzcompr(const unmanaged_string& in, int level = -1);
             std::vector<char> gzuncompr(const unmanaged_string& in);
             managed_cstring   _inflate(const unmanaged_string& in);
-		};
+        };
     };
 
     namespace http {
@@ -221,7 +221,7 @@ namespace crypto {
         std::string md5(const unmanaged_string& string);
         std::string md5raw(const unmanaged_string& string);
         std::string fmd5(const char* filename);
-		
+
         std::string md6(const std::string& data); // small data
         std::string md6raw(const std::string& data);
         std::string fmd6(const char* filename, int hashByteLen = 64);
@@ -230,7 +230,3 @@ namespace crypto {
 
 #endif
 
-/*
-* Copyright (c) 2012-2016 by halx99 ALL RIGHTS RESERVED.
-* Consult your license regarding permissions and restrictions.
-V2.0:2016 */
