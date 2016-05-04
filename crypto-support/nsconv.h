@@ -416,6 +416,18 @@ std::string& replace(std::string&& string, const std::string& replaced_key, cons
 }
 
 inline
+std::string::size_type replace_once(std::string& string, const std::string& replaced_key, const std::string& replacing_key) 
+{
+    std::string::size_type pos = 0;
+    if( (pos = string.find(replaced_key, pos)) != std::string::npos )
+    {
+        (void)string.replace(pos, replaced_key.length(), replacing_key);
+        return pos;
+    }
+    return std::string::npos;
+}
+
+inline
 std::string rsubstr(const std::string& string, size_t off)
 {
     if(string.length() >= off)
