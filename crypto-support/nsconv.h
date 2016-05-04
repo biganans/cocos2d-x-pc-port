@@ -763,7 +763,7 @@ inline void create_guid(LPTSTR outs)
     _GUID guid;
     CoCreateGuid(&guid);
 
-    wprintf_s(outs, TEXT("%08X-%04X-%04X-%04X-%04X%08X"),
+    wsprintf(outs, TEXT("%08X-%04X-%04X-%04X-%04X%08X"),
         guid.Data1,
         guid.Data2,
         guid.Data3,
@@ -778,7 +778,7 @@ inline void create_guid_v2(LPTSTR outs)
     _GUID guid;
     CoCreateGuid(&guid);
 
-    wprintf_s(outs, TEXT("%08X%04X%04X%016I64X"), 
+    wsprintf(outs, TEXT("%08X%04X%04X%016I64X"),
         guid.Data1,
         guid.Data2,
         guid.Data3,
