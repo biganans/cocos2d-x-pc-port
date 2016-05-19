@@ -416,6 +416,18 @@ std::string& replace(std::string&& string, const std::string& replaced_key, cons
 }
 
 inline
+std::string::size_type replace_once(std::string& string, const std::string& replaced_key, const std::string& replacing_key) 
+{
+    std::string::size_type pos = 0;
+    if( (pos = string.find(replaced_key, pos)) != std::string::npos )
+    {
+        (void)string.replace(pos, replaced_key.length(), replacing_key);
+        return pos;
+    }
+    return std::string::npos;
+}
+
+inline
 std::string rsubstr(const std::string& string, size_t off)
 {
     if(string.length() >= off)
@@ -751,7 +763,7 @@ inline void create_guid(LPTSTR outs)
     _GUID guid;
     CoCreateGuid(&guid);
 
-    wprintf_s(outs, TEXT("%08X-%04X-%04X-%04X-%04X%08X"),
+    wsprintf(outs, TEXT("%08X-%04X-%04X-%04X-%04X%08X"),
         guid.Data1,
         guid.Data2,
         guid.Data3,
@@ -766,7 +778,7 @@ inline void create_guid_v2(LPTSTR outs)
     _GUID guid;
     CoCreateGuid(&guid);
 
-    wprintf_s(outs, TEXT("%08X%04X%04X%016I64X"), 
+    wsprintf(outs, TEXT("%08X%04X%04X%016I64X"),
         guid.Data1,
         guid.Data2,
         guid.Data3,
