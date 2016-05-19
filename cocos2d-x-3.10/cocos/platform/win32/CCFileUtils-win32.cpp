@@ -374,6 +374,10 @@ static Data getData(const std::string& filename, bool forString)
 		{
 			fileUtils->decryptFunc((unsigned char*)buffer, (ssize_t&)size);
 		}
+        if (fileUtils->uncomprFunc)
+        {
+            fileUtils->uncomprFunc(&buffer, (ssize_t&)size, false);
+        }
         ret.fastSet(buffer, size);
     }
     return ret;
@@ -439,6 +443,10 @@ std::string FileUtilsWin32::getFileData(const std::string& filename)
 			this->decryptFunc((unsigned char*)buffer.data(), (ssize_t&)size);
 			buffer.resize(size);
 		}
+        if (this->uncomprFunc)
+        {
+            this->uncomprFunc(&buffer, (ssize_t&)size, true);
+        }
 
         return std::move(buffer);
     } while (0);
@@ -498,6 +506,17 @@ unsigned char* FileUtilsWin32::getFileData(const std::string& filename, const ch
         msg = msg + filename + ") failed, error code is " + errorCodeBuffer;
         CCLOG("%s", msg.c_str());
     }
+	else {
+        /// ^v^ Great full resources encrypt solution, No unnecessary alloc & copy
+		if (this->decryptFunc)
+		{
+			this->decryptFunc((unsigned char*)pBuffer, *size);
+		}
+        if (this->uncomprFunc)
+        {
+            this->uncomprFunc(&pBuffer, (ssize_t&)*size, false);
+        }
+	}
     return pBuffer;
 }
 

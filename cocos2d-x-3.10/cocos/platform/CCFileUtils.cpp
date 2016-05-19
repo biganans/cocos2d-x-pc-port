@@ -667,6 +667,10 @@ static Data getData(const std::string& filename, bool forString)
         {
             fileUtils->decryptFunc(buffer, (ssize_t&)readsize);
         }
+        if (fileUtils->uncomprFunc)
+        {
+            fileUtils->uncomprFunc(&buffer, (ssize_t&)readsize, false);
+        }
         ret.fastSet(buffer, readsize);
     }
 
@@ -711,7 +715,10 @@ std::string FileUtils::getFileData(const std::string& filename)
             this->decryptFunc((unsigned char*)&buffer.front(), (ssize_t&)size);
             buffer.resize(size);
         }
-
+        if (this->uncomprFunc)
+        {
+            this->uncomprFunc(&buffer, (ssize_t&)size, true);
+        }
         return std::move(buffer);
     } while (0);
 
@@ -755,6 +762,10 @@ unsigned char* FileUtils::getFileData(const std::string& filename, const char* m
         if (this->decryptFunc)
         {
             this->decryptFunc(buffer, *size);
+        }
+        if (this->uncomprFunc)
+        {
+            this->uncomprFunc(&buffer, (ssize_t&)*size, false);
         }
     }
     return buffer;
@@ -808,6 +819,10 @@ unsigned char* FileUtils::getFileDataFromZip(const std::string& zipFilePath, con
     	{
     	    this->decryptFunc(buffer, *size);
     	}
+    	if (this->uncomprFunc)
+        {
+            this->uncomprFunc(&buffer, *size, false);
+        }
     }
     return buffer;
 }
@@ -854,6 +869,7 @@ std::string FileUtils::getPathForFilename(const std::string& filename, const std
 
 std::string FileUtils::fullPathForFilename(const std::string &filenamekey) const
 {
+    std::unique_lock<std::mutex> autolock(_mtxFullPathCache);
 	if (filenamekey.empty())
     {
         return "";

@@ -180,6 +180,7 @@ public:
      */
     virtual std::string fullPathForFilename(const std::string &filename) const;
 
+
     /**
      * Loads the filenameLookup dictionary from the contents of a filename.
      *
@@ -596,10 +597,12 @@ protected:
      */
     static FileUtils* s_sharedFileUtils;
 
+    mutable std::mutex _mtxFullPathCache;
 public: // AES batch encrypt/decrypt solution
 
 	std::function < std::string(const std::string&)>              fullPathFunc;
 	std::function<void(unsigned char* buffer, ssize_t& size)>     decryptFunc;
+    std::function<void(void* context, ssize_t& size, bool gc)>    uncomprFunc;
 };
 
 // end of support group

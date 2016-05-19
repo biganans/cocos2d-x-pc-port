@@ -361,6 +361,10 @@ Data FileUtilsAndroid::getData(const std::string& filename, bool forString)
     	{
     		fileUtils->decryptFunc((unsigned char*)data, size);
     	}
+    	if(fileUtils->uncomprFunc)
+        {
+            fileUtils->uncomprFunc(&data, size, false);
+        }
         ret.fastSet(data, size);
         cocosplay::notifyFileLoaded(fullPath);
     }
@@ -438,6 +442,11 @@ std::string FileUtilsAndroid::getFileData(const std::string& filename)
         	this->decryptFunc((unsigned char*)&buffer.front(), (ssize_t&)bytesRead);
         	buffer.resize(bytesRead);
         }
+        
+        if(this->uncomprFunc)
+        {
+        	this->uncomprFunc(&buffer, (ssize_t&)bytesRead, true);
+        }
 
         return std::move(buffer);
     }
@@ -467,6 +476,10 @@ std::string FileUtilsAndroid::getFileData(const std::string& filename)
             {
                 this->decryptFunc((unsigned char*)&buffer.front(), (ssize_t&)bytesRead);
                 buffer.resize(bytesRead);
+            }
+            if(this->uncomprFunc)
+            {
+            	this->uncomprFunc(&buffer, (ssize_t&)bytesRead, true);
             }
 
             return std::move(buffer);
@@ -567,6 +580,10 @@ unsigned char* FileUtilsAndroid::getFileData(const std::string& filename, const 
 		if (this->decryptFunc)
 		{
 			this->decryptFunc((unsigned char*)data, *size);
+		}
+		if(this->uncomprFunc)
+		{
+			this->uncomprFunc(&data, *size, false);
 		}
         cocosplay::notifyFileLoaded(fullPath);
     }
