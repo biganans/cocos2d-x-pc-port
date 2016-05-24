@@ -14,6 +14,8 @@
 #include "nsconv.h"
 #include <set>
 #include <Shlwapi.h>
+#pragma comment(lib, "Shlwapi.lib")
+
 USING_NS_PURELIB;
 
 long fsutil::get_file_size(const char *path)
