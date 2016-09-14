@@ -48,7 +48,7 @@ using namespace std;
 
 NS_CC_BEGIN
 
-static const char* s_etc1_alpha_endix = "Alpha";
+static std::string s_etc1AlphaEndix = "Alpha";
 
 // implementation TextureCache
 

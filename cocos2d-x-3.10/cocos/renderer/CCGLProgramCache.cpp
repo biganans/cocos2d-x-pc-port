@@ -289,36 +289,36 @@ void GLProgramCache::loadDefaultGLPrograms()
     _programs.insert(std::make_pair(GLProgram::SHADER_CAMERA_CLEAR, p));
 
     /// x-studio365 spec,ETC1 ALPHA supports.
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1AAPositionTextureColor);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AA_POSITION_TEXTURE_COLOR, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1AAPositionTextureColor_noMVP);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AA_POSITION_TEXTURE_COLOR_NO_MVP, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1ASPositionTextureColor);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AS_POSITION_TEXTURE_COLOR, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1ASPositionTextureColor_noMVP);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AS_POSITION_TEXTURE_COLOR_NO_MVP, p));
 
     /// x-studio365 spec,ETC1 Gray supports.
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1AAPositionTextureGray);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AA_POSITION_TEXTURE_GRAY, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1AAPositionTextureGray_noMVP);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AA_POSITION_TEXTURE_GRAY_NO_MVP, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1ASPositionTextureGray);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AS_POSITION_TEXTURE_GRAY, p));
 
-    p = new GLProgram();
+    p = new(std::nothrow) GLProgram();
     loadDefaultGLProgram(p, kShaderType_ETC1ASPositionTextureGray_noMVP);
     _programs.insert(std::make_pair(GLProgram::SHADER_NAME_ETC1AS_POSITION_TEXTURE_GRAY_NO_MVP, p));
 }

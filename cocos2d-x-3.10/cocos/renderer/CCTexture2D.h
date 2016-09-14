@@ -408,9 +408,9 @@ public:
 
     std::string getPath()const { return _filePath; }
 
+    // FOR ETC1 ALPHA supports.
     void setAlphaTexture(Texture2D *pAlpha);
 	Texture2D* getAlphaTexture(){ return _alphaTexture; }
-
     GLuint getAlphaName() const;
 
     /* @warnning: ETC1 mreaged texture */
